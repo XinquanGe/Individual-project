@@ -4,7 +4,10 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Scanner;
+import java.util.Set;
 
 /**
  * 
@@ -189,7 +192,27 @@ public class Manager extends Account {
     }
 
     void searchUser(Scanner scanner, LocalLibraryData localLibraryData) {
-		
+		HashMap<String, User> users = localLibraryData.userAccounts;
+		if(users.isEmpty()) {
+		    System.out.println("No user in system.");
+		}else {
+		    System.out.println("Entry a User Name.");
+		    String name = scanner.nextLine();
+		    User get = null;
+		    Set<String> set = users.keySet();
+		    Iterator<String> it = set.iterator();
+		    while(it.hasNext()) {
+			String str = it.next(); 
+			if(str.equals(name)) {
+			    get = users.get(str);
+			    System.out.println("Find user "+str);
+			    System.out.println(str+" order book list");
+			    get.orderList();
+			}
+		    }if(get == null) {
+			System.out.println("No User Found");
+		    }
+		}
     }
 	// Return a borrowed Book back to library, only function for manager
     void returnBook(Scanner scanner, LocalLibraryData localLibraryData) {
@@ -227,6 +250,11 @@ public class Manager extends Account {
 		df=false;
 		if(df==true){
 			localLibraryData.lended.remove(wantToReturn);
+			ArrayList<Book> userbooklist = wantToReturn.holder.getBorrow_books();
+			userbooklist.remove(wantToReturn);
+			wantToReturn.holder.setBorrow_books(userbooklist);
+			
+			wantToReturn.holder=null;
 			wantToReturn.borrow=false;
 			localLibraryData.freeToLend.add(wantToReturn);
 			System.out.println("Checkout successful. Title = " + wantToReturn.title + " ISBN = " + wantToReturn.iSBN);

@@ -4,5 +4,10 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="test"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
+	<classpathentry kind="lib" path="E:/310 Individual Project/Individual-project/cosc310_T28_librarySystem/lib/commons-beanutils-1.9.4.jar"/>
+	<classpathentry kind="lib" path="E:/310 Individual Project/Individual-project/cosc310_T28_librarySystem/lib/commons-collections4-4.4.jar"/>
+	<classpathentry kind="lib" path="E:/310 Individual Project/Individual-project/cosc310_T28_librarySystem/lib/commons-lang3-3.12.0.jar"/>
+	<classpathentry kind="lib" path="E:/310 Individual Project/Individual-project/cosc310_T28_librarySystem/lib/ezmorph-1.0.6.jar"/>
+	<classpathentry kind="lib" path="E:/310 Individual Project/Individual-project/cosc310_T28_librarySystem/lib/json-lib-2.1-jdk15.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

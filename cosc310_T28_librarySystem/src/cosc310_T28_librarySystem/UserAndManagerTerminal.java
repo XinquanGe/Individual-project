@@ -228,8 +228,11 @@ public class UserAndManagerTerminal extends Thread {
             System.out.println("4: add a new book from library");
             System.out.println("5: delete a book");
             System.out.println("6: return a lended book");
-            System.out.println("7: quit and save");
-            System.out.println("8: quit without save");
+            System.out.println("7: search a user");
+            System.out.println("8: quit and save");
+            System.out.println("9: quit without save");
+            
+            
             if (!scanner.hasNextLine()) {
                 return null;
             }
@@ -254,9 +257,12 @@ public class UserAndManagerTerminal extends Thread {
                     ((Manager) currentAccount).returnBook(scanner, localLibraryData);
                     break;
                 case "7":
+                    ((Manager) currentAccount).searchUser(scanner, localLibraryData);
+                    break;
+                case "8":
                     saveSession(scanner, localLibraryData, "main.ser");
                     return UserOrManagerCommandResult.EXIT;
-                case "8":
+                case "9":
                     return UserOrManagerCommandResult.EXIT; 
         	default:
                     System.out.println("Selection unavailable");
@@ -266,10 +272,12 @@ public class UserAndManagerTerminal extends Thread {
             
             System.out.println("1: search for a book");
             System.out.println("2: apply to lend a book");
-            System.out.println("3: save session");
-            System.out.println("4: quit and save");
-            System.out.println("5: quit without save");
-
+            System.out.println("3: get book list");
+            System.out.println("4: save session");
+            System.out.println("5: Take a break? Get a random joke!");
+            System.out.println("6: quit and save");
+            System.out.println("7: quit without save");
+            
             if (!scanner.hasNextLine()) {
                 return null;
             }
@@ -282,14 +290,25 @@ public class UserAndManagerTerminal extends Thread {
                     ((User) currentAccount).borrowBook(scanner, localLibraryData);
                     break;
                 case "3":
-                    saveSession(scanner, localLibraryData, "main.ser");
+                    System.out.println("You have borrow book:");
+                    ((User) currentAccount).orderList();
                     break;
                 case "4":
                     saveSession(scanner, localLibraryData, "main.ser");
-                    return UserOrManagerCommandResult.EXIT;
+                    break;
                 case "5":
+		try {
+		    new JokeAPI().getjoke();
+		} catch (IOException e) {
+		    e.printStackTrace();
+		}
+                    break;  
+                case "6":
+                    saveSession(scanner, localLibraryData, "main.ser");
+                    return UserOrManagerCommandResult.EXIT;
+                case "7":
                     return UserOrManagerCommandResult.EXIT;   
-                    
+                
         	default:
                     System.out.println("Selection unavailable");
                     break;
