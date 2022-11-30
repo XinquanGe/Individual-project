@@ -77,3 +77,13 @@ a.	For all user to easily interact with the program
 ![Image](code%20structure.png)
 ![Image](code%20LENDING BOOK.png)
 ![Image](code%20BORROWING BOOK.png)
+
+
+### Individual Work
+For Xinquan Ge Individual Assignment, few new function was add:
+A free API to create a random joke from:
+https://sv443.net/jokeapi/v2/#getting-started
+
+A function for user to check what book they have borrow
+
+A function for Manager to search a user and check the books they borrowed
